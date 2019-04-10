@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/destroy'
   get 'users/update'
-  get 'users/create'
-  get 'users/index'
+  resources :users
+  resources :events
+  resources :event_venues
+  resources :tickets
+  
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

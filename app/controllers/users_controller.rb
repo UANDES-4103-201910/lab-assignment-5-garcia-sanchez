@@ -31,5 +31,6 @@ class UsersController < ApplicationController
   		format.json {render status: :reset_content}
   end
   def users_params
-  	params.require(:user).permir(:id, :name)
+  	params.require(:user).permit(:id, :name)
+  end	
 end
