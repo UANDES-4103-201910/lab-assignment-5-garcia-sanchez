@@ -1,4 +1,8 @@
 class TicketsController < ApplicationController
+  
+  def index
+  end
+
   def new
   	@ticket = Ticket.new
   def create
@@ -28,7 +32,8 @@ class TicketsController < ApplicationController
   		format.html {redirect_to @ticket, notice: "Ticket updated"}
   		format.json {render status: :reset_content}
   end
+
   def ticket_params
-  	params.require(:ticket).permit(:id)
+  	params.require(:ticket).permit(:location)
   end
 end

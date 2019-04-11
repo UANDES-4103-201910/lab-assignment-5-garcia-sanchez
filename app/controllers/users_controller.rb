@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  def index
+  end
   def new
   	@user = User.new
   end
@@ -31,6 +33,6 @@ class UsersController < ApplicationController
   		format.json {render status: :reset_content}
   end
   def users_params
-  	params.require(:user).permit(:id, :name)
+  	params.require(:user).permit(:name)
   end	
 end
