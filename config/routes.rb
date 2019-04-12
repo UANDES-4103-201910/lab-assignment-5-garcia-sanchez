@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get 'ticket_types/create'
   get 'ticket_types/destroy'
   get 'ticket_types/update'
+  get 'ticket_types/1/tickets#create'
+  get 'ticket_types/1/tickets#destroy'
+  get 'ticket_types/1/tickets#update'
+  get 'ticket_types/1/tickets#index'
 
   get 'tickets/create'
   get 'tickets/destroy'
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/destroy'
   get 'users/update'
+
+
   resources :users
   resources :events
 

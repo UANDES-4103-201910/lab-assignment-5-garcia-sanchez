@@ -1,10 +1,26 @@
 class TicketsController < ApplicationController
   
   def index
+  @tickets = Ticket.all
   end
 
   def new
   	@ticket = Ticket.new
+  end
+
+  def show
+  	@tickets = Ticket.find(:id)
+  	respond to do |format|
+  		if @tickets.nil?
+  			format.html {render :index}
+  			format.html {render status: :not_found}
+  		else
+  		format.html {redirect_to @tickets, notice: "Here you have yo tickets :)"}
+  		format.json {render json: @tickets}
+  		end
+  	end
+  end
+
   def create
   	@ticket = Ticket.new(params[:ticket])
 	  	respond to do |format|
