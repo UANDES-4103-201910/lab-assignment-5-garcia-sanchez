@@ -35,4 +35,12 @@ class UsersController < ApplicationController
   def users_params
   	params.require(:user).permit(:name)
   end	
+  
+  def user_with_most_tickets
+  	@user = User.find(params[:id])
+	sql = "select o.user_id, count(*) as c from orders o, tickets t \
+	where t.ticket_id = o.order_id group by o.user_id order by c desc limit 1"
+	result = ActiveRecord::Base.connection.execute(sql)
+	User.find(result[0]['user_id']) unless result.nil?
+	end
 end
