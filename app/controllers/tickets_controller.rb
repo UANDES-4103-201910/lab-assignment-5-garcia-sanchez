@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
   def update
   	@ticket = Ticket.find(params[:id])
   	respond to do |format|
-  		@ticket.update!(ticket_params)
+  		@ticket.update(ticket_params)
   		format.html {redirect_to @ticket, notice: "Ticket updated"}
   		format.json {render status: :reset_content}
   end

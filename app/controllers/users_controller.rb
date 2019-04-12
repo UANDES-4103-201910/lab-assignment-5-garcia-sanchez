@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
   	@user = User.find(params[:id])
   	respond to do |format|
-  		@user.update!(users_params)
+  		@user.update(users_params)
   		format.html {redirect_to @user, notice: "User updated"}
   		format.json {render status: :reset_content}
   end

@@ -26,7 +26,7 @@ class EventVenuesController < ApplicationController
   def update
   	@event_venue = EventVenue.find(params[:id])
   	respond to do |format|
-  		@event_venue.update!(event_venues_params)
+  		@event_venue.update(event_venues_params)
   		format.html {redirect_to @event_venue, notice: "Event venue updated"}
   		format.json {render status: :reset_content}
   end

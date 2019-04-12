@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   def update
   	@event = Event.find(params[:id])
   	respond to do |format|
-  		@event.update!(events_params)
+  		@event.update(events_params)
   		format.html {redirect_to @event, notice: "Event updated"}
   		format.json {render status: :reset_content}
   end
