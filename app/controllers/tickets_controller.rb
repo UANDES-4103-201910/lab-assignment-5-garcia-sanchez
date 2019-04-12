@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
 
   def show
   	@tickets = Ticket.find(:id)
-  	respond to do |format|
+  	respond_to do |format|
   		if @tickets.nil?
   			format.html {render :index}
   			format.html {render status: :not_found}
@@ -23,7 +23,7 @@ class TicketsController < ApplicationController
 
   def create
   	@ticket = Ticket.new(params[:ticket])
-	  	respond to do |format|
+	  	respond_to do |format|
 	  		if @ticket.save
 		  		format.html {redirect_to @ticket, notice: "Ticket created"}
 		  		format.json {render json: @ticket}
@@ -31,22 +31,25 @@ class TicketsController < ApplicationController
 		  		format.html {render :new}
 		  		format.json {render json: @ticket.errors, status: :not_found}
 		  	end
+      end
   end
 
   def destroy
   	@ticket = Ticket.find(params[:id])
-  	respond to do |format|
-		@ticket.destroy
-		format.html {redirect_to @ticket, notice: "Ticket removed"}
-		format.json {render status: :no_content}
+  	respond_to do |format|
+  		@ticket.destroy
+  		format.html {redirect_to @ticket, notice: "Ticket removed"}
+  		format.json {render status: :no_content}
+    end
   end
 
   def update
   	@ticket = Ticket.find(params[:id])
-  	respond to do |format|
+  	respond_to do |format|
   		@ticket.update(ticket_params)
   		format.html {redirect_to @ticket, notice: "Ticket updated"}
   		format.json {render status: :reset_content}
+    end
   end
 
   def ticket_params
