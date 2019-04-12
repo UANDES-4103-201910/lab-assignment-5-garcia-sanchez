@@ -42,5 +42,12 @@ class EventsController < ApplicationController
   def upcomming_events
     today = Date.today
     later = today + 3.month
-    @events = Event.where(start_date: Date.today )
+    @events = Event.where(start_date: toady..later)
+    respond_to do |format|
+      format.html {redirect_to @event, notice: "paquita la vakita"}
+      format.json {render satus: :accepted}
+    end
+  end
+
+
 end
